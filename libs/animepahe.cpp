@@ -157,9 +157,9 @@ namespace AnimepaheCLI
                 {
                     // Do nothing so far with the Blu-ray disk tag.
                 }
-                else if (spanContent == "dub")
+                else if ((spanContent == "dub") || (spanContent == "eng"))
                 {
-                    content["epLang"] = "eng";
+                    content["epLang"] = "en";
                     break;
                 }
                 else if (spanContent == "chi")
@@ -192,11 +192,8 @@ namespace AnimepaheCLI
         {
             const std::string& epLang = episode.at("epLang");
 
-            if (
-                (audioLang == "en" && epLang == "eng") ||
-                (audioLang == "jp" && epLang == "jp")  ||
-                (audioLang == "zh" && epLang == "zh")
-            ) {
+            if (audioLang == epLang)
+            {
                 filteredData.push_back(episode);
             }
         }
